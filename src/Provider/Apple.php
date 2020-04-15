@@ -215,7 +215,7 @@ class Apple extends AbstractProvider
             ->issuedBy($this->teamId)
             ->permittedFor('https://appleid.apple.com')
             ->issuedAt($time)
-            ->expiresAt($time + 600)
+            ->expiresAt($time + 86400*180)
             ->relatedTo($this->clientId)
             ->withClaim('sub', $this->clientId)
             ->withHeader('alg', 'ES256')
