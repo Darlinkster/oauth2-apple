@@ -81,8 +81,11 @@ class AppleAccessToken extends AccessToken
      * @return array Apple's JSON Web Key
      */
     protected function getAppleKey()
-    {
-        return JWK::parseKeySet(file_get_contents('https://appleid.apple.com/auth/keys'));
+    {        
+        $data = file_get_contents('https://appleid.apple.com/auth/keys');
+        $array = json_decode($data, true);
+        
+        return JWK::parseKeySet($array);
     }
 
     /**
