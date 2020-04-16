@@ -209,7 +209,10 @@ class Apple extends AbstractProvider
     public function getAccessToken($grant, array $options = [])
     {
         $signer = new Sha256();
+        $timezone = date_default_timezone_get();
+        date_default_timezone_set("UTC");
         $time = time();
+        date_default_timezone_set($timezone);
 
         $token = (new Builder())
             ->issuedBy($this->teamId)
